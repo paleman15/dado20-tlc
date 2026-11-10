@@ -1,0 +1,9 @@
+# Autosave y temporales de MATLAB
+*.asv
+*.m~
+*.mex*
+slprj/
+# Generado por informe_dado20.m (CI lo publica como artefacto)
+figura_dado20.png
+# Enunciado del profesor: no se publica
+*.pdf

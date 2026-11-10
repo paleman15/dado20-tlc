@@ -1,0 +1,29 @@
+name: Pruebas MATLAB
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # MATLAB gratis en Actions para repositorios PUBLICOS (no requiere licencia)
+      - uses: matlab-actions/setup-matlab@v2
+        with:
+          release: latest
+          cache: true
+
+      # Si algun assert falla, el paso termina en error y el check sale en rojo
+      - uses: matlab-actions/run-command@v2
+        with:
+          command: pruebas_dado20, informe_dado20
+
+      # La figura generada queda descargable en la pestana Actions
+      - uses: actions/upload-artifact@v4
+        with:
+          name: figura-dado20
+          path: figura_dado20.png
